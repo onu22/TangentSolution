@@ -25,12 +25,10 @@ namespace TangentSolution.Controllers
         {
 
             List<Employee> employees = _employeeService.SearchEmployees();
-
             DashBoardModel model = new DashBoardModel();
             PrepareDashBoardModel(model, employees);
             return View(model);
         }
-
 
         [HttpPost]
         public IActionResult Index(DashBoardModel model)
@@ -63,8 +61,9 @@ namespace TangentSolution.Controllers
             model.AvailableRace.Add(new SelectListItem() { Value = "I", Text = "Indian or Asian" });
             model.AvailableRace.Add(new SelectListItem() { Value = "W", Text = "White" });
             model.AvailableRace.Add(new SelectListItem() { Value = "N", Text = "Non Dominant" });
-
             model.Employees = employees;
+
+            model.Statistics.NumberOfEmployees = _employeeService.GetNumberOfEmployees();
 
         }
 
