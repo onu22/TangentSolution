@@ -9,6 +9,5 @@ namespace Tangent.Services.Employees
        int GetNumberOfEmployees();
        int GetBirthDays();
        int GetPositions();
-       int GetReviews();
     }
 }

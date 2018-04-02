@@ -23,7 +23,9 @@ namespace Tangent.Services.Employees
 
         public int GetBirthDays()
         {
-            throw new System.NotImplementedException();
+            List<Employee> employees = SearchEmployees();
+            var query = from q in employees where q.days_to_birthday == "0" select q;
+            return query.Count();
         }
 
         public int GetNumberOfEmployees()
@@ -34,12 +36,14 @@ namespace Tangent.Services.Employees
 
         public int GetPositions()
         {
-            throw new System.NotImplementedException();
-        }
-
-        public int GetReviews()
-        {
-            throw new System.NotImplementedException();
+            List<int> positions = new List<int>();
+            List<Employee> employees = SearchEmployees();
+            foreach (Employee employee in employees)
+            {
+                if (!positions.Contains(employee.Position.id))
+                    positions.Add(employee.Position.id);
+            }
+            return positions.Count();
         }
 
         public List<Employee> SearchEmployees(string apiUri= null)

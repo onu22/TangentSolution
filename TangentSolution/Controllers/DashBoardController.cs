@@ -14,11 +14,13 @@ namespace TangentSolution.Controllers
     public class DashBoardController : Controller
     {
         private readonly IEmployeeService _employeeService;
+        private readonly IEmployeeReviewService _employeeReviewService;
         private readonly IWebHelper _webHelper;
 
-        public DashBoardController(IEmployeeService employeeService, IWebHelper webHelper)
+        public DashBoardController(IEmployeeService employeeService, IEmployeeReviewService employeeReviewService, IWebHelper webHelper)
         {
             _employeeService = employeeService;
+            _employeeReviewService = employeeReviewService;
             _webHelper = webHelper;
         }
         public IActionResult Index()
@@ -64,7 +66,9 @@ namespace TangentSolution.Controllers
             model.Employees = employees;
 
             model.Statistics.NumberOfEmployees = _employeeService.GetNumberOfEmployees();
-
+            model.Statistics.BirthDays = _employeeService.GetBirthDays();
+            model.Statistics.Positions = _employeeService.GetPositions();
+            model.Statistics.Reviews = _employeeReviewService.GetReviews();
         }
 
 

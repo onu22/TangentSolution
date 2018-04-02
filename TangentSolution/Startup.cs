@@ -39,6 +39,8 @@ namespace TangentSolution
             // Add application services.
             services.AddTransient<IEmailSender, EmailSender>();
             services.AddScoped<IEmployeeService, EmployeeService>();
+            services.AddScoped<IEmployeeReviewService, EmployeeReviewService>();
+
             services.AddSingleton<HttpClient>();
             services.AddSingleton<IHttpClientService, HttpClientService>();
             services.AddScoped<ICacheManager, MemoryCacheManager>();

@@ -36,7 +36,7 @@ namespace Tangent.Services.ResourceClient
             return response;
         }
 
-        private void ConfigurateHttpClient(SecurityToken token)//private void ConfigurateHttpClient(HttpClient client, SecurityToken token)
+        private void ConfigurateHttpClient(SecurityToken token)
         {
             _client.BaseAddress = new Uri(API_BASEURI);
             _client.DefaultRequestHeaders.Accept.Clear();
